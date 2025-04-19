@@ -9,4 +9,5 @@ Interplanetary file system acts as a storage for storing any metadata, including
 - That node is connected to other nodes in the network.
 - Other nodes can pin the data from your node to copy and distribute it along the network.
 - In a distributed system, nodes pinning other nodes' data ensures availability.
-- In contrast to blockchain, IPFS data have the option to choose which data to pin.
+- In contrast to blockchain, IPFS datanodes have the option to choose which data to pin.
+- IPFS is just decentralized storage, no execution.
