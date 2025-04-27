@@ -2,6 +2,7 @@
 
 pragma solidity ^0.8.18;
 
+import {console} from "forge-std/Test.sol";
 import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import {Base64} from "@openzeppelin/contracts/utils/Base64.sol";
 
@@ -37,11 +38,15 @@ contract MoodNft is ERC721 {
             revert MoodNft__CantSetMoodIfNotOwner();
         }
 
+        console.log("Current mood: ", uint256(s_tokenIdToMood[tokenId]));
+
         if(s_tokenIdToMood[tokenId] == Mood.SAD){
             s_tokenIdToMood[tokenId] = Mood.HAPPY;
         } else {
             s_tokenIdToMood[tokenId] = Mood.SAD;
         }
+
+        console.log("Mood flipped to: ", uint256(s_tokenIdToMood[tokenId]));
     }
 
     function _baseURI() internal pure override returns (string memory) {

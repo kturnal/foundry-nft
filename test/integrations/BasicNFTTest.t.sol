@@ -3,8 +3,8 @@
 pragma solidity ^0.8.18;
 
 import {Test} from "forge-std/Test.sol";
-import {BasicNft} from "../src/BasicNFT.sol";
-import {DeployBasicNft} from "../script/DeployBasicNFT.s.sol";
+import {BasicNft} from "../../src/BasicNFT.sol";
+import {DeployBasicNft} from "../../script/DeployBasicNFT.s.sol";
 
 contract BasicNFTTest is Test {
 
