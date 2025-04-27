@@ -59,13 +59,27 @@ contract MoodNft is ERC721 {
         // {"description": "Mood Reflecting NFT"}
         // {"attributes": [{"trait_type": "moodiness", "value": "100"}]}
         // {"image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj4KICAgIDxjaGF0dCBmaWxsPSJyZWQiIGQ9Ik0wIDBoMTAwdjEwMEgweiIvPgo8L3N2Zz4K"}
+        
+        /*
+        If you want to see the JSON in a more readable format, you can use the following code:
+        string memory tokenMetadata2 = string.concat(
+        "{\n",
+        '  "name": "',     name(),    '",\n',
+        '  "description": "Mood Reflecting NFT",\n',
+        '  "attributes": [\n',
+        '    { "trait_type": "Moodiness", "value": 100 }\n',
+        '  ],\n',
+        '  "image": "',    imageUri,  '"\n',
+        "}"
+        );
+        */
 
         string memory imageUri;
 
-        if(s_tokenIdToMood[tokenId] == Mood.SAD){
-            imageUri = s_sadSvgImageUri;
-        } else {
+        if(s_tokenIdToMood[tokenId] == Mood.HAPPY) {
             imageUri = s_happySvgImageUri;
+        } else {
+            imageUri = s_sadSvgImageUri;
         }
 
         return string(
@@ -82,20 +96,5 @@ contract MoodNft is ERC721 {
                 )
             )
         );
-
-        /*
-        If you want to see the JSON in a more readable format, you can use the following code:
-        string memory tokenMetadata2 = string.concat(
-        "{\n",
-        '  "name": "',     name(),    '",\n',
-        '  "description": "Mood Reflecting NFT",\n',
-        '  "attributes": [\n',
-        '    { "trait_type": "Moodiness", "value": 100 }\n',
-        '  ],\n',
-        '  "image": "',    imageUri,  '"\n',
-        "}"
-        );
-        */
-
     }
 }
