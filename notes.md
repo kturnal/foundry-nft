@@ -101,4 +101,27 @@ When we write `recentWinner.call{value: address(this).balance}("");` we're direc
 
 * within `()` we can pass the data needed to call a specific function.
 
+For more information on how to work with encoding via EVM, and how to call anything via the data parameters, see: 
 
+https://github.com/Cyfrin/foundry-nft-cu/blob/main/src/sublesson/Encoding.sol
+https://github.com/Cyfrin/foundry-nft-cu/blob/main/src/sublesson/CallAnything.sol
+
+## To Validate Transactions Through foundry cast using its calldata
+
+As an example, you get get the details of a transaction in MetaMask by navigating to the HEX tab, and copying it. An example calldata:
+```
+0xfb37e883000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000076578616d706c6500000000000000000000000000000000000000000000000000
+```
+
+You can verify the selector of a function like this: 
+```
+cast sig "mintNFT(string)"
+0xfb37e883
+```
+And it will give you the selector back, which you can compare on the contract address. 
+
+You can verify the calldata like this: 
+```
+cast --calldata-decode "mintNFT(string)" 0xfb37e883000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000076578616d706c6500000000000000000000000000000000000000000000000000
+```
+which will return `"example"` in this case. 
